@@ -1,2 +1,2 @@
 # Make_A_Game
-This repository is created game while practicing Unity
+This repository game is created based on a Unity Roll a Ball tutorial (not completed)
