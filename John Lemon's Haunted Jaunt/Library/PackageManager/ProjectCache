@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637665873765699283
-    m_Hash: 2972803705
+      ticks: 637666013379598998
+    m_Hash: 3700282802
   m_LockFileStatus:
     m_FilePath: C:/Users/user/Unity/Make_A_Game/John Lemon's Haunted Jaunt/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637665873848560112
-    m_Hash: 659263752
+      ticks: 637666013379598998
+    m_Hash: 123160779
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
