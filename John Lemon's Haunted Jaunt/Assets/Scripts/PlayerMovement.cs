@@ -22,14 +22,17 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    //FixedUpdate는 렌더링된 프레임에 맞춰 호출되는 것이 아닌, 물리 ㅣ스템이 충돌 및 상호작용을 계산하기 전 호출된다.
+    void FixedUpdate() 
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        //사용자 입력 이동
+        float horizontal = Input.GetAxis("Horizontal"); //수평
+        float vertical = Input.GetAxis("Vertical"); //수직
 
         m_Movement.Set(horizontal, 0, vertical);
         m_Movement.Normalize();
 
+        //플레이어의 입력 감지
         bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
         bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
         bool isWalking = hasHorizontalInput || hasVerticalInput;
@@ -48,11 +51,13 @@ public class PlayerMovement : MonoBehaviour
             m_AudioSource.Stop();
         }
 
+        //캐릭터 회전
         Vector3 desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
         m_Rotation = Quaternion.LookRotation(desiredForward);
     }
     private void OnAnimatorMove()
     {
+        //캐릭터 이동 및 회전 적용
         m_Rigidbody.MovePosition(m_Rigidbody.position + m_Movement * m_Animator.deltaPosition.magnitude);
         m_Rigidbody.MoveRotation(m_Rotation);
     }

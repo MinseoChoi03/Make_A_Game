@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameEnding : MonoBehaviour
 {
     public float fadeDuration = 1f;
-    public float displayImageDuration = 1f;
+    public float displayImageDuration = 1.5f;
     public GameObject player;
     public CanvasGroup exitBackgroundImageCanvasGroup;
     public CanvasGroup caughtBackgroundImageCanvasGroup;
@@ -38,6 +38,7 @@ public class GameEnding : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
+        //캐릭터가 탈출범위에 진입했는지 확인
         if (other.gameObject == player)
         {
             m_IsPlayerAtExit = true;
@@ -53,7 +54,7 @@ public class GameEnding : MonoBehaviour
 
         m_Timer += Time.deltaTime;
         imageCanvasGroup.alpha = m_Timer / fadeDuration;
-        if (m_Timer > fadeDuration + displayImageDuration)
+        if (m_Timer > fadeDuration + displayImageDuration) //이미지 fade 후, 약간의 시간 지난 뒤 종료
         {
             if (doRestart)
             {
@@ -61,6 +62,10 @@ public class GameEnding : MonoBehaviour
             }
             else
             {
+                
+                #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+                #endif
                 Application.Quit();
             }
         }

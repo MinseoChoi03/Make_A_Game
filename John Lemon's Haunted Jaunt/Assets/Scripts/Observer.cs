@@ -19,6 +19,7 @@ public class Observer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //플레이어가 범위 안에 있을 때만
         if (m_IsPlayerInRange)
         {
             Vector3 direction = player.position - transform.position + Vector3.up;
@@ -35,6 +36,7 @@ public class Observer : MonoBehaviour
             }
         }
     }
+    // 캐릭터가 공격 범위에 있는지 확인
     void OnTriggerEnter(Collider other)
     {
         if(other.transform == player)
